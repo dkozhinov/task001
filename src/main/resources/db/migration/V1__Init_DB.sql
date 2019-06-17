@@ -1,0 +1,77 @@
+USE [Absence]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+CREATE TABLE [dbo].[vocName](
+	[IDNAME] [int] IDENTITY(1,1) NOT NULL,
+	[NAME] [nvarchar](50) NULL,
+ CONSTRAINT [PK_vocName] PRIMARY KEY CLUSTERED
+(
+	[IDNAME] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+
+CREATE TABLE [dbo].[vocPosition](
+	[IDPOSITION] [int] IDENTITY(1,1) NOT NULL,
+	[POSITION] [nvarchar](400) NULL,
+ CONSTRAINT [PK_vocPosition] PRIMARY KEY CLUSTERED
+(
+	[IDPOSITION] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+
+
+CREATE TABLE [dbo].[Absence](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[IDNAME] [int] NULL,
+	[IDPOSITION] [int] NULL,
+	[DATEABSENCE] [datetime2](7) NULL,
+	[TIMEABSENCE] [time](7) NULL,
+	[CAUSE] [nvarchar](4000) NULL,
+ CONSTRAINT [PK_Absence] PRIMARY KEY CLUSTERED
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[Absence]  WITH CHECK ADD  CONSTRAINT [FK_Absence_vocName] FOREIGN KEY([IDNAME])
+REFERENCES [dbo].[vocName] ([IDNAME])
+GO
+
+ALTER TABLE [dbo].[Absence] CHECK CONSTRAINT [FK_Absence_vocName]
+GO
+
+ALTER TABLE [dbo].[Absence]  WITH CHECK ADD  CONSTRAINT [FK_Absence_vocPosition] FOREIGN KEY([IDPOSITION])
+REFERENCES [dbo].[vocPosition] ([IDPOSITION])
+GO
+
+ALTER TABLE [dbo].[Absence] CHECK CONSTRAINT [FK_Absence_vocPosition]
+GO
+
+
+
+CREATE VIEW [dbo].[vAbsence]
+AS
+SELECT        dbo.Absence.*, dbo.vocName.NAME, dbo.vocPosition.POSITION
+FROM            dbo.Absence INNER JOIN
+                         dbo.vocName ON dbo.Absence.IDNAME = dbo.vocName.IDNAME INNER JOIN
+                         dbo.vocPosition ON dbo.Absence.IDPOSITION = dbo.vocPosition.IDPOSITION
+
+GO

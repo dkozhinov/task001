@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Getting Started: Handing Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-$END$
+<h1>Result</h1>
+<p th:text="'idName: ' + ${absence.idName}" />
+<p th:text="'name: ' + ${absence.name}" />
+<p th:text="'idPosition: ' + ${absence.idPosition}" />
+<p th:text="'position: ' + ${absence.position}" />
+<p th:text="'cause: ' + ${absence.cause}" />
+<a href="/editor">Submit another message</a>
 </body>
 </html>
