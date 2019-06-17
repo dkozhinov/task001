@@ -28,5 +28,9 @@ public class VocNameService {
         return repository.findAll();
     }
 
+    public List<VocName> findByName(String name) {
+        return repository.findByName(name);
+    }
+
 
 }

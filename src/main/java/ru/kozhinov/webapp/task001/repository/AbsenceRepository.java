@@ -14,6 +14,7 @@ import java.util.List;
 @Repository
 public interface AbsenceRepository extends JpaRepository<Absence, Integer>{
 
-    List<Absence> findAllByName(String name);
+    List<Absence> findAll();
+    List<Absence> findByName(String name);
 
 }

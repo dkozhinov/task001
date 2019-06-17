@@ -7,12 +7,7 @@ package ru.kozhinov.webapp.task001.domain;
  */
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -20,19 +15,19 @@ import java.io.Serializable;
 public class VocName implements Serializable {
 
     @Id
-    @GeneratedValue
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idName;
 
     @Column(name = "NAME", nullable = true)
     private String name;
 
 
-    public int getId() {
-        return id;
+    public int getIdName() {
+        return idName;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdName(int idName) {
+        this.idName = idName;
     }
 
 

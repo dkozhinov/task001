@@ -28,5 +28,9 @@ public class VocPositionService {
         return repository.findAll();
     }
 
+    public List<VocPosition> findByPosition(String position) {
+        return repository.findByPosition(position);
+    }
+
 
 }

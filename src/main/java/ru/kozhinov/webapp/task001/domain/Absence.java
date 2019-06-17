@@ -6,18 +6,15 @@ package ru.kozhinov.webapp.task001.domain;
  * Created on 17.06.2019
  */
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "vAbsence")
-public class Absence {
+public class Absence implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "IDNAME", nullable = true)

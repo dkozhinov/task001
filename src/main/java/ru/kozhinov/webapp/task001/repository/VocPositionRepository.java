@@ -14,6 +14,9 @@ import java.util.List;
 @Repository
 public interface VocPositionRepository extends JpaRepository<VocPosition, Integer>{
 
-    List<VocPosition> findAllByName(String name);
+    List<VocPosition> findAll();
+    List<VocPosition> findByPosition(String position);
+
+
 
 }

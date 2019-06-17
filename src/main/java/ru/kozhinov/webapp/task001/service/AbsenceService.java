@@ -27,8 +27,12 @@ public class AbsenceService {
         repository.save(absence);
     }
 
+    public List<Absence> findAll(){
+        return repository.findAll();
+    }
 
-
-
+    public List<Absence> findByName(String name) {
+        return repository.findByName(name);
+    }
 
 }
