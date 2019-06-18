@@ -9,11 +9,11 @@ package ru.kozhinov.webapp.task001.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Absence", schema = "dbo")
+@Table(name = "Absence")
 public class Absence {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private int id;
 

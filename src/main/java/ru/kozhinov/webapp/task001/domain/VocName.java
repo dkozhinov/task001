@@ -8,16 +8,17 @@ package ru.kozhinov.webapp.task001.domain;
 
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
-public class VocName implements Serializable, Comparable<VocName>{
+@Table(name = "vocposition")
+public class VocName {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
     private int idName;
 
-    @Column
+    @Column(name = "NAME")
     private String name;
 
 
@@ -36,11 +37,6 @@ public class VocName implements Serializable, Comparable<VocName>{
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    @Override
-    public int compareTo(VocName that) {
-        return Integer.compare(this.idName, that.idName);
     }
 
 }

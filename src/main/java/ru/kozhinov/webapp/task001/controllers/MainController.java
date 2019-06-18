@@ -11,11 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import ru.kozhinov.webapp.task001.service.AbsenceService;
 import ru.kozhinov.webapp.task001.domain.Absence;
-import ru.kozhinov.webapp.task001.service.AbsenceServiceImpl;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class MainController {
@@ -24,12 +25,20 @@ public class MainController {
     @Autowired
     private AbsenceService service;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String listAbsence(Model model) {
+
+
+    @SuppressWarnings("unchecked")
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public Model list(Model model) {
+
         List<Absence> absences = service.findAll();
         model.addAttribute("absences", absences);
-        return "index";
+
+        return model;
     }
+
+
+
 
     @RequestMapping(value = "/new", method = RequestMethod.GET)
     public String newAbsence(Model model) {
