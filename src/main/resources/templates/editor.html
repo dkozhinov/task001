@@ -1,12 +1,13 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Handing Form Submission</title>
+    <title>Editor</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 <h1>Form</h1>
 <form action="#" th:action="@{/editor/submit}" th:object="${absence}" method="post">
+    <p>id: <input type="text" th:field="*{id}" /></p>
     <p>idName: <input type="text" th:field="*{idName}" /></p>
     <p>name: <input type="text" th:field="*{name}" /></p>
     <p>idPosition: <input type="text" th:field="*{idPosition}" /></p>

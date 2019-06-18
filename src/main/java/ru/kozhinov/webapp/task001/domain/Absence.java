@@ -10,26 +10,25 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "vAbsence")
-public class Absence implements Serializable {
+public class Absence implements Serializable, Comparable<Absence> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "IDNAME", nullable = true)
+    @Column
     private int idName;
 
-    @Column(name = "IDPOSITION", nullable = true)
+    @Column
     private int idPosition;
 
-    @Column(name = "CAUSE", nullable = true)
+    @Column
     private String cause;
 
-    @Column(name = "NAME", nullable = true)
+    @Column
     private String name;
 
-    @Column(name = "POSITION", nullable = true)
+    @Column
     private String position;
 
 
@@ -84,4 +83,12 @@ public class Absence implements Serializable {
     public void setPosition(String position) {
         this.position = position;
     }
+
+
+    @Override
+    public int compareTo(Absence that) {
+        return Integer.compare(this.id, that.id);
+    }
+
+
 }

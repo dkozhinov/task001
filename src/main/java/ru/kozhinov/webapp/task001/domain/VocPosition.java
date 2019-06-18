@@ -11,14 +11,13 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "vocPosition")
-public class VocPosition implements Serializable {
+public class VocPosition implements Serializable, Comparable<VocPosition> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int idPosition;
 
-    @Column(name = "POSITION", nullable = true)
+    @Column
     private String position;
 
 
@@ -38,4 +37,10 @@ public class VocPosition implements Serializable {
     public void setPosition(String position) {
         this.position = position;
     }
+
+    @Override
+    public int compareTo(VocPosition that) {
+        return Integer.compare(this.idPosition, that.idPosition);
+    }
+
 }
