@@ -11,7 +11,12 @@ import ru.kozhinov.webapp.task001.domain.Absence;
 import ru.kozhinov.webapp.task001.repository.AbsenceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.Spliterator;
+import java.util.Spliterators;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 public class AbsenceService {
@@ -27,8 +32,13 @@ public class AbsenceService {
         repository.save(absence);
     }
 
-    public List<Absence> findAll(){
-        return repository.findAll();
+    public List<Absence> getAll(){
+
+        return StreamSupport.stream(
+                Spliterators.spliteratorUnknownSize(repository.findAll().iterator(), Spliterator.NONNULL),false)
+                    .sorted(Comparator.reverseOrder())
+                    .collect(Collectors.toList());
+
     }
 
     public List<Absence> findByName(String name) {

@@ -23,12 +23,17 @@ import java.util.List;
 public class MainController {
 
 
-    @Autowired
     private AbsenceService service;
+
+    @Autowired
+    public void setAbsenceService(AbsenceService service) {
+        this.service = service;
+    }
+
 
     @RequestMapping("/main")
     public String mainPage(Model model) {
-        model.addAttribute("absences", service.findAll());
+        model.addAttribute("absences", service.getAll());
         return "main";
     }
 

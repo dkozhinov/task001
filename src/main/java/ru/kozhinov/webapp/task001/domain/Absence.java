@@ -6,10 +6,13 @@ package ru.kozhinov.webapp.task001.domain;
  * Created on 17.06.2019
  */
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@Table(name = "RawAbsence")
 public class Absence implements Serializable, Comparable<Absence> {
 
     @Id
@@ -32,6 +35,9 @@ public class Absence implements Serializable, Comparable<Absence> {
     private String position;
 
 
+    public Absence() {
+        this.cause = "qqqqqqqqq";
+    }
 
     public int getId() {
         return id;
