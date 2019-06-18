@@ -9,12 +9,7 @@ package ru.kozhinov.webapp.task001.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import ru.kozhinov.webapp.task001.domain.Absence;
-import java.util.List;
 
 @Repository
-public interface AbsenceRepository extends JpaRepository<Absence, Integer>{
-
-    List<Absence> findAll();
-    List<Absence> findByName(String name);
-
+public interface AbsenceRepository extends JpaRepository<Absence, Integer> {
 }

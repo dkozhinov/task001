@@ -6,37 +6,42 @@ package ru.kozhinov.webapp.task001.domain;
  * Created on 17.06.2019
  */
 
-import com.fasterxml.jackson.annotation.JsonView;
-
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
-@Table(name = "RawAbsence")
-public class Absence implements Serializable, Comparable<Absence> {
+@Table(name = "Absence", schema = "dbo")
+public class Absence {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
+    @Column(name = "ID")
     private int id;
 
-    @Column
+    @Column(name = "ID_NAME")
     private int idName;
 
-    @Column
+    @Column(name = "ID_POSITION")
     private int idPosition;
 
-    @Column
+    @Column(name = "CAUSE")
     private String cause;
 
-    @Column
+    @Column(name = "NAME")
     private String name;
 
-    @Column
+    @Column(name = "POSITION")
     private String position;
 
 
     public Absence() {
-        this.cause = "qqqqqqqqq";
+    }
+
+    public Absence(int idName, int idPosition, String cause, String name, String position) {
+        this.idName = idName;
+        this.idPosition = idPosition;
+        this.cause = cause;
+        this.name = name;
+        this.position = position;
     }
 
     public int getId() {
@@ -90,11 +95,12 @@ public class Absence implements Serializable, Comparable<Absence> {
         this.position = position;
     }
 
-
     @Override
-    public int compareTo(Absence that) {
-        return Integer.compare(this.id, that.id);
+    public String toString() {
+        return "Absence{" +
+                ", name='" + name +
+                ", position=" + position +
+                ", cause=" + cause +
+                '}';
     }
-
-
 }
