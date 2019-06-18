@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.kozhinov.webapp.task001.service.AbsenceService;
 import ru.kozhinov.webapp.task001.domain.Absence;
+import ru.kozhinov.webapp.task001.service.AbsenceServiceImpl;
 
 import java.util.List;
 
@@ -23,14 +24,14 @@ public class MainController {
     @Autowired
     private AbsenceService service;
 
-    @GetMapping("/")
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String listAbsence(Model model) {
         List<Absence> absences = service.findAll();
         model.addAttribute("absences", absences);
         return "index";
     }
 
-    @GetMapping("/new")
+    @RequestMapping(value = "/new", method = RequestMethod.GET)
     public String newAbsence(Model model) {
         model.addAttribute("absence", new Absence());
         return "edit";

@@ -15,12 +15,9 @@ import java.util.List;
 @Service
 public class AbsenceServiceImpl implements AbsenceService {
 
+    @Autowired
     private AbsenceRepository repository;
 
-    @Autowired
-    public void setAbsenceRepository(AbsenceRepository repository){
-        this.repository = repository;
-    }
 
     @Override
     public Absence getAbsenceById(Integer id) {

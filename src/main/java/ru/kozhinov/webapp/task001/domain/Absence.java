@@ -36,14 +36,6 @@ public class Absence {
     public Absence() {
     }
 
-    public Absence(int idName, int idPosition, String cause, String name, String position) {
-        this.idName = idName;
-        this.idPosition = idPosition;
-        this.cause = cause;
-        this.name = name;
-        this.position = position;
-    }
-
     public int getId() {
         return id;
     }
@@ -95,12 +87,4 @@ public class Absence {
         this.position = position;
     }
 
-    @Override
-    public String toString() {
-        return "Absence{" +
-                ", name='" + name +
-                ", position=" + position +
-                ", cause=" + cause +
-                '}';
-    }
 }

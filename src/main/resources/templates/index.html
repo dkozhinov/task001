@@ -23,8 +23,8 @@
 
             <div th:each="absence : ${absences}">
                 <h3 th:text="${absence.name}"/>
-                <p th:text="$absence.position}"/>
-                <p th:text="${absence.cause}"/>
+                <p  th:text="${absence.position}"/>
+                <p  th:text="${absence.cause}"/>
                 <hr/>
             </div>
         </div>
