@@ -9,11 +9,8 @@ package ru.kozhinov.webapp.task001.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import ru.kozhinov.webapp.task001.domain.VocPosition;
-import java.util.List;
 
 @Repository
 public interface VocPositionRepository extends JpaRepository<VocPosition, Integer>{
-
-    List<VocPosition> findAllByName(String name);
 
 }

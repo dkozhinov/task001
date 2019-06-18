@@ -6,36 +6,35 @@ package ru.kozhinov.webapp.task001.domain;
  * Created on 17.06.2019
  */
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "vAbsence")
+@Table(name = "Absence")
 public class Absence {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
     private int id;
 
-    @Column(name = "IDNAME", nullable = true)
+    @Column(name = "ID_NAME")
     private int idName;
 
-    @Column(name = "IDPOSITION", nullable = true)
+    @Column(name = "ID_POSITION")
     private int idPosition;
 
-    @Column(name = "CAUSE", nullable = true)
+    @Column(name = "CAUSE")
     private String cause;
 
-    @Column(name = "NAME", nullable = true)
+    @Column(name = "NAME")
     private String name;
 
-    @Column(name = "POSITION", nullable = true)
+    @Column(name = "POSITION")
     private String position;
 
 
+    public Absence() {
+    }
 
     public int getId() {
         return id;
@@ -87,4 +86,5 @@ public class Absence {
     public void setPosition(String position) {
         this.position = position;
     }
+
 }

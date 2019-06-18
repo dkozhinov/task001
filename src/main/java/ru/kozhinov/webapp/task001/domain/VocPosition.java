@@ -7,32 +7,27 @@ package ru.kozhinov.webapp.task001.domain;
  */
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.io.Serializable;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "vocPosition")
-public class VocPosition implements Serializable {
+@Table(name = "vocname")
+public class VocPosition {
 
     @Id
-    @GeneratedValue
-    private int id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
+    private int idPosition;
 
-    @Column(name = "POSITION", nullable = true)
+    @Column(name = "POSITION")
     private String position;
 
 
-    public int getId() {
-        return id;
+    public int getIdPosition() {
+        return idPosition;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdPosition(int idPosition) {
+        this.idPosition = idPosition;
     }
 
 
@@ -43,4 +38,6 @@ public class VocPosition implements Serializable {
     public void setPosition(String position) {
         this.position = position;
     }
+
+
 }

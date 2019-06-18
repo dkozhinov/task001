@@ -10,11 +10,13 @@ package ru.kozhinov.webapp.task001.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import ru.kozhinov.webapp.task001.service.AbsenceService;
 import ru.kozhinov.webapp.task001.domain.Absence;
+
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class MainController {
@@ -24,16 +26,31 @@ public class MainController {
     private AbsenceService service;
 
 
-    @RequestMapping(value="/editor", method= RequestMethod.GET)
-    public String absenceForm(Model model) {
-        model.addAttribute("absence", new Absence());
-        return "editor";
+
+    @SuppressWarnings("unchecked")
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public Model list(Model model) {
+
+        List<Absence> absences = service.findAll();
+        model.addAttribute("absences", absences);
+
+        return model;
     }
 
-    @RequestMapping(value="/editor/submit", method=RequestMethod.POST)
-    public String absenceSubmit(@ModelAttribute Absence absence) {
-        service.createAbsence(absence);
-        return "result";
+
+
+
+    @RequestMapping(value = "/new", method = RequestMethod.GET)
+    public String newAbsence(Model model) {
+        model.addAttribute("absence", new Absence());
+        return "edit";
+    }
+
+    @RequestMapping(value="/edit/{id}", method=RequestMethod.POST)
+    public String editAbsence(@PathVariable Integer id, Model model) {
+        Absence absence = service.getAbsenceById(id);
+        model.addAttribute("absence", absence);
+        return "operations/edit";
     }
 
 
