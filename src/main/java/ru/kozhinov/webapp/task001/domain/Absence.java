@@ -30,10 +30,10 @@ public class Absence {
     private String position;
 
     @Column(name = "absencedate")
-    private LocalDate absencedate;
+    private String absencedate;
 
     @Column(name = "absencetime")
-    private LocalTime absencetime;
+    private String absencetime;
 
     public Absence() {
     }
@@ -70,19 +70,19 @@ public class Absence {
         this.position = position;
     }
 
-    public LocalDate getAbsencedate() {
+    public String getAbsencedate() {
         return absencedate;
     }
 
-    public void setAbsencedate(LocalDate absencedate) {
+    public void setAbsencedate(String absencedate) {
         this.absencedate = absencedate;
     }
 
-    public LocalTime getAbsencetime() {
+    public String getAbsencetime() {
         return absencetime;
     }
 
-    public void setAbsencetime(LocalTime absencetime) {
+    public void setAbsencetime(String absencetime) {
         this.absencetime = absencetime;
     }
 }

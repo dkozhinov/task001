@@ -1,3 +1,3 @@
 ALTER TABLE absence
-ADD COLUMN absencedate date null,
-ADD COLUMN absencetime time null;
+ADD COLUMN absencedate varchar(25) null,
+ADD COLUMN absencetime varchar(25) null;

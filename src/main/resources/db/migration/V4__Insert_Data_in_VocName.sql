@@ -1,1 +1,2 @@
-INSERT INTO vocname (name) VALUES("Tom");
+INSERT INTO vocname (name) VALUES("Михаил Пугачев");
+commit;
