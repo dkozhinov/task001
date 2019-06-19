@@ -10,20 +10,17 @@
 
 <div class="div-center-margin">
     <ul class="nav navbar-nav">
-        <li><a href="/editor" class="active">Завести информацию по опоздавшему</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-        <li><a href="/search"><span class="glyphicon glyphicon-log-in"></span>Выполнить поиск</a></li>
+        <li><a href="/" class="active">Вернуться на начальную страницу</a></li>
     </ul>
 </div>
 
 <div class="div-center-margin">
     <table class="table table-bordered" border="1" style="margin:auto; width:80%; height:100%;">
-        <caption><h4>Табель отсутствия сотрудника<span th:text="${currentDb}"></span>:</h4></caption>
+        <caption><h4>Результаты поиска<span th:text="${currentDb}"></span>:</h4></caption>
         <thead>
         <tr style="background:#428bca;color:#ffffff;">
             <th>id</th>
-            <th>ФИО сотрудника</th>
+            <th>ФИО</th>
             <th>Должность</th>
             <th>Причина опоздания</th>
             <th>Дата</th>

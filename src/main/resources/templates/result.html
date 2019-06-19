@@ -1,16 +1,27 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Result</title>
+    <title>MySQL</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<h1>Result</h1>
-<p th:text="'idName: ' + ${absence.idName}" />
-<p th:text="'name: ' + ${absence.name}" />
-<p th:text="'idPosition: ' + ${absence.idPosition}" />
-<p th:text="'position: ' + ${absence.position}" />
-<p th:text="'cause: ' + ${absence.cause}" />
-<a href="/editor">Submit another message</a>
+<h3>Данные сохранены</h3>
+<p th:text="'id: ' + ${absence.id}" />
+<p th:text="'ФИО сотрудника: ' + ${absence.name}" />
+<p th:text="'Должность: ' + ${absence.position}" />
+<p th:text="'Причина опоздания: ' + ${absence.cause}" />
+<p th:text="'Дата: ' + ${absence.absencedate}" />
+<p th:text="'Время: ' + ${absence.absencetime}" />
+
+<div class="div-center-margin">
+    <ul class="nav navbar-nav">
+        <li><a href="/editor">Отметить еще одного опоздавшего</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+
+        <li><a href="/">Вернуться на начальную страницу</a></li>
+    </ul>
+</div>
+
 </body>
 </html>

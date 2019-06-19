@@ -1,0 +1,1 @@
+INSERT INTO vocname (name) VALUES("Tom");

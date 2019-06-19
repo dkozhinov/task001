@@ -7,31 +7,33 @@ package ru.kozhinov.webapp.task001.domain;
  */
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
-@Table(name = "Absence")
+@Table(name = "absence")
 public class Absence {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
-    @Column(name = "ID_NAME")
-    private int idName;
-
-    @Column(name = "ID_POSITION")
-    private int idPosition;
-
-    @Column(name = "CAUSE")
+    @Column(name = "cause")
     private String cause;
 
-    @Column(name = "NAME")
+
+    @Column(name = "name")
     private String name;
 
-    @Column(name = "POSITION")
+    @Column(name = "position")
     private String position;
 
+    @Column(name = "absencedate")
+    private LocalDate absencedate;
+
+    @Column(name = "absencetime")
+    private LocalTime absencetime;
 
     public Absence() {
     }
@@ -43,25 +45,6 @@ public class Absence {
     public void setId(int id) {
         this.id = id;
     }
-
-
-    public int getIdName() {
-        return idName;
-    }
-
-    public void setIdName(int idName) {
-        this.idName = idName;
-    }
-
-
-    public int getIdPosition() {
-        return idPosition;
-    }
-
-    public void setIdPosition(int idPosition) {
-        this.idPosition = idPosition;
-    }
-
 
     public String getCause() {
         return cause;
@@ -87,4 +70,19 @@ public class Absence {
         this.position = position;
     }
 
+    public LocalDate getAbsencedate() {
+        return absencedate;
+    }
+
+    public void setAbsencedate(LocalDate absencedate) {
+        this.absencedate = absencedate;
+    }
+
+    public LocalTime getAbsencetime() {
+        return absencetime;
+    }
+
+    public void setAbsencetime(LocalTime absencetime) {
+        this.absencetime = absencetime;
+    }
 }

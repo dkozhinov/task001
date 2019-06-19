@@ -10,24 +10,24 @@ package ru.kozhinov.webapp.task001.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "vocname")
+@Table(name = "vocposition")
 public class VocPosition {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ID")
-    private int idPosition;
+    @Column(name = "id")
+    private int id;
 
-    @Column(name = "POSITION")
+    @Column(name = "position")
     private String position;
 
 
-    public int getIdPosition() {
-        return idPosition;
+    public int getId() {
+        return id;
     }
 
-    public void setIdPosition(int idPosition) {
-        this.idPosition = idPosition;
+    public void setId(int id) {
+        this.id = id;
     }
 
 
