@@ -11,48 +11,78 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-import ru.kozhinov.webapp.task001.service.AbsenceService;
+import ru.kozhinov.webapp.task001.repository.AbsenceRepository;
 import ru.kozhinov.webapp.task001.domain.Absence;
+import ru.kozhinov.webapp.task001.repository.VocNameRepository;
+import ru.kozhinov.webapp.task001.repository.VocPositionRepository;
 
-import java.util.List;
-import java.util.Map;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Controller
 public class MainController {
 
 
     @Autowired
-    private AbsenceService service;
+    private AbsenceRepository repository;
+
+    @Autowired
+    private VocNameRepository vocNameRepository;
+
+    @Autowired
+    private VocPositionRepository vocPositionRepository;
 
 
-
-    @SuppressWarnings("unchecked")
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public Model list(Model model) {
-
-        List<Absence> absences = service.findAll();
-        model.addAttribute("absences", absences);
-
-        return model;
+    @GetMapping("/all")
+    public @ResponseBody Iterable<Absence> getAllUsers() {
+        return repository.findAll();
     }
 
 
+    @GetMapping("/")
+    public String index(Model model) {
+        model.addAttribute("absences", repository.findAll());
+        return "index";
+    }
 
 
-    @RequestMapping(value = "/new", method = RequestMethod.GET)
-    public String newAbsence(Model model) {
+    @GetMapping("/search")
+    public String search(Model model) {
         model.addAttribute("absence", new Absence());
-        return "edit";
+        return "search";
     }
 
-    @RequestMapping(value="/edit/{id}", method=RequestMethod.POST)
-    public String editAbsence(@PathVariable Integer id, Model model) {
-        Absence absence = service.getAbsenceById(id);
-        model.addAttribute("absence", absence);
-        return "operations/edit";
+    @PostMapping("/searchnameabsence")
+    public String searchnameabsence(@ModelAttribute("absence") Absence absence, Model model) {
+        model.addAttribute("absences", repository.findByName(absence.getName()));
+        return "searchabsence";
+    }
+    @PostMapping("/searchpositionabsence")
+    public String searchpositionabsence(@ModelAttribute("absence") Absence absence, Model model) {
+        model.addAttribute("absences", repository.findByPosition(absence.getPosition()));
+        return "searchabsence";
+    }
+    @PostMapping("/searchcauseabsence")
+    public String searchcauseabsence(@ModelAttribute("absence") Absence absence, Model model) {
+        model.addAttribute("absences", repository.findByCause(absence.getCause()));
+        return "searchabsence";
     }
 
+
+
+    @GetMapping("/editor")
+    public String edit(Model model) {
+        model.addAttribute("absence", new Absence());
+        model.addAttribute("vocnames", vocNameRepository.findAll());
+        model.addAttribute("vocpositions", vocPositionRepository.findAll());
+        return "editor";
+    }
+
+    @PostMapping("/addabsence")
+    public String submit(@ModelAttribute("absence") Absence absence) {
+        repository.save(absence);
+        return "result";
+    }
 
 
 }
