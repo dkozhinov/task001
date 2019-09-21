@@ -1,2 +1,3 @@
-INSERT INTO vocname (name) VALUES("Михаил Пугачев");
-commit;
+BEGIN TRANSACTION
+INSERT INTO vocname (name) VALUES('Михаил Пугачев');
+COMMIT;

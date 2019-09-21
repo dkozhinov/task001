@@ -1,20 +1,36 @@
-    create table absence (
-        id int not null auto_increment,
-        cause varchar(255) null,
-        name varchar(255) null,
-        position varchar(255) null,
-        primary key (id)
-    );
+    CREATE TABLE [dbo].[absence](
+    	[id] [int] IDENTITY(1,1) NOT NULL,
+    	[cause] [nvarchar](255) NULL,
+    	[name] [nvarchar](255) NULL,
+    	[position] [nvarchar](255) NULL,
+     CONSTRAINT [PK_absence] PRIMARY KEY CLUSTERED
+    (
+    	[id] ASC
+    )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+    ) ON [PRIMARY]
 
-   create table vocposition (
-        id int not null auto_increment,
-        position varchar(255),
-        primary key (id)
-    );
+    GO
 
-   create table vocname (
-        id int not null auto_increment,
-        name varchar(255),
-        primary key (id)
-    );
+
+ CREATE TABLE [dbo].[vocposition](
+ 	[id] [int] IDENTITY(1,1) NOT NULL,
+ 	[position] [nvarchar](255) NULL,
+  CONSTRAINT [PK_vocposition] PRIMARY KEY CLUSTERED
+ (
+ 	[id] ASC
+ )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+ ) ON [PRIMARY]
+
+ GO
+
+ CREATE TABLE [dbo].[vocname](
+ 	[id] [int] IDENTITY(1,1) NOT NULL,
+ 	[name] [nvarchar](255) NULL,
+  CONSTRAINT [PK_vocname] PRIMARY KEY CLUSTERED
+ (
+ 	[id] ASC
+ )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+ ) ON [PRIMARY]
+
+ GO
 
